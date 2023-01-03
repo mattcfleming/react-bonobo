@@ -1,8 +1,8 @@
 # [React Bonobo](https://react-bonobo.com)
 
-> React Renderer to build UI interfaces using Canvas/WebGL 
+> React Renderer to build UI interfaces using Canvas/WebGL
 
-<img src="assets/logo.png" width="220" />
+<!-- <img src="assets/logo.png" width="220" /> -->
 
 ## [Check the Docs (react-bonobo.com)](https://react-bonobo.com)
 
@@ -28,7 +28,9 @@ These restrictions make super responsive 60fps experiences especially tricky. Th
 
 ## API Usage
 
-#### Install it using [NPM](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+### Installation
+
+#### using [NPM](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
 ```bash
 # NPM
@@ -80,4 +82,3 @@ You can follow React-Bonobo development status here: [Roadmap](https://github.co
 ## Credits
 
 A special thanks to [Matt Fleming](https://github.com/mattcfleming) <3
-
