@@ -2,6 +2,8 @@ import Image from './elements/Image';
 import Text from './elements/Text';
 import View from './elements/View';
 import { CustomComponents } from '../modules/Register';
+import { trackMousePosition, isMouseInside } from './utils';
+import Button from './elements/Button';
 
 const CHILDREN = 'children';
 const STYLE = 'style';
@@ -23,11 +25,43 @@ const ReactBonoboComponent = {
       );
     });
 
+    const tag = '[CREATE_ELEMENT]';
+    if (type === 'Button') {
+      const { ctx } = bonoboContextGlobal;
+      ctx.canvas.addEventListener(
+        'click',
+        (event) => {
+          props.onClick(event);
+        },
+        false
+      );
+    }
+    /**
+     *  Handling click button event
+     * @param {*} event
+     */
+    // const onClick = (event: SyntheticMouseEvent<HTMLButtonElement>) => {
+    //   const rect = {
+    //     x,
+    //     y,
+    //     height,
+    //     width,
+    //   };
+    //   const mousePosition = trackMousePosition(ctx.canvas, event);
+    //   if (isMouseInside(mousePosition, rect)) {
+    //     //redrawButton(ctx);
+    //     if (props.onClick && typeof props.onClick === 'function') {
+    //       props.onClick(event);
+    //     }
+    //   }
+    // };
+
     const COMPONENTS = {
       ...customDict,
       Image: Image(props),
       Text: Text(props),
       View: new View(props),
+      Button: Button(props),
     };
 
     if (!COMPONENTS[type]) {

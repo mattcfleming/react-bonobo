@@ -1,5 +1,12 @@
 import React, { Component, useState, useEffect, RefObject } from 'react';
-import { Text, View, Image, Dimensions, StyleSheet } from 'react-bonobo';
+import {
+  Text,
+  View,
+  Image,
+  Dimensions,
+  StyleSheet,
+  ListView,
+} from 'react-bonobo';
 
 const { width }: { width: any } = Dimensions.get('window');
 
@@ -52,8 +59,16 @@ function Slideshow() {
 
   return (
     <View style={{ ...styles.slideshow }}>
-      <Image style={{ width: 100, height: 100 }} src={slides[currentSlide]} />
+      {/* <View>
+        <Image style={{ width: 100, height: 100 }} src={slides[currentSlide]} />
+      </View> */}
       <Text style={{ ...styles.txt }}>Slideshow</Text>
+      <Text>More Text</Text>
+      <ListView
+        style={{ position: 'absolute', top: 200, width: 1000, height: 220 }}
+        data={slides}
+        renderItem={({ item }) => <Text>{item}</Text>}
+      />
     </View>
   );
 }
