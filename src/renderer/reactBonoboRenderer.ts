@@ -65,7 +65,7 @@ const ReactBonoboFiber = reconciler({
       };
     }
 
-    const apeElement = reactBonoboComponent.createElement(
+    const bonoboElement = reactBonoboComponent.createElement(
       type,
       props,
       rootContainerInstance,
@@ -73,13 +73,13 @@ const ReactBonoboFiber = reconciler({
       internalInstanceHandle
     );
 
-    precacheFiberNode(internalInstanceHandle, apeElement);
-    updateFiberProps(apeElement, props);
-    return apeElement;
+    precacheFiberNode(internalInstanceHandle, bonoboElement);
+    updateFiberProps(bonoboElement, props);
+    return bonoboElement;
   },
 
   createTextInstance(text, rootContainerInstance, internalInstanceHandle) {
-    let textNode = reactApeComponent.createTextNode(
+    let textNode = reactBonoboComponent.createTextNode(
       text,
       rootContainerInstance
     );
@@ -265,7 +265,7 @@ const defaultContainer = {};
 const roots = typeof WeakMap === 'function' ? new WeakMap() : new Map();
 
 const ReactBonoboRenderer = {
-  render(reactApeElement, canvasDOMElement, callback) {
+  render(reactBonoboElement, canvasDOMElement, callback) {
     const containerKey =
       canvasDOMElement == null ? defaultContainer : canvasDOMElement;
     let root = roots.get(containerKey);
@@ -275,7 +275,7 @@ const ReactBonoboRenderer = {
       bonoboCtxGlobal = null;
     }
 
-    ReactBonoboFiber.updateContainer(reactApeElement, root, null, callback);
+    ReactBonoboFiber.updateContainer(reactBonoboElement, root, null, callback);
 
     return ReactBonoboFiber.getPublicRootInstance(root);
   },

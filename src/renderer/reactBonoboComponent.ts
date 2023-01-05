@@ -3,7 +3,7 @@ import Image from './elements/Image';
 import Text from './elements/Text';
 import View from './elements/View';
 import { CustomComponents } from '../modules/Register';
-import { trackMousePosition, isMouseInside } from './utils';
+// import { trackMousePosition, isMouseInside } from './utils';
 import Button from './elements/Button';
 
 const CHILDREN = 'children';
@@ -41,25 +41,24 @@ const ReactBonoboComponent = {
      *  Handling click button event
      * @param {*} event
      */
-    const onClick = (event: SyntheticMouseEvent<HTMLButtonElement>) => {
-      const rect = {
-        x,
-        y,
-        height,
-        width,
-      };
-      const mousePosition = trackMousePosition(ctx.canvas, event);
-      if (isMouseInside(mousePosition, rect)) {
-        // redrawButton(ctx);
-        if (props.onClick && typeof props.onClick === 'function') {
-          props.onClick(event);
-        }
-      }
-    };
+    // const onClick = (event: SyntheticMouseEvent<HTMLButtonElement>) => {
+    //   const rect = {
+    //     x,
+    //     y,
+    //     height,
+    //     width,
+    //   };
+    //   const mousePosition = trackMousePosition(ctx.canvas, event);
+    //   if (isMouseInside(mousePosition, rect)) {
+    //     // redrawButton(ctx);
+    //     if (props.onClick && typeof props.onClick === 'function') {
+    //       props.onClick(event);
+    //     }
+    //   }
+    // };
 
     const COMPONENTS = {
       ...customDict,
-      onClick,
       Image: Image(props),
       Text: Text(props),
       View: new View(props),
@@ -68,7 +67,7 @@ const ReactBonoboComponent = {
 
     if (!COMPONENTS[type]) {
       throw new Error(
-        `React Bonobo could not identify "${type}" as ReactApeComponent. More details: website.com`
+        `React Bonobo could not identify "${type}" as ReactBonoboComponent. More details: website.com`
       );
     }
 

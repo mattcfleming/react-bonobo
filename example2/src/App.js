@@ -11,6 +11,8 @@ class App extends React.Component {
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
+          width: "100%",
+          height: "100%",
           backgroundColor: "#44bb44"
         }}
       >
