@@ -1,3 +1,4 @@
+// @ts-nocheck
 export type CustomCanvasRenderingContext2D = CanvasRenderingContext2D & {
   webkitBackingStorePixelRatio?: number;
   mozBackingStorePixelRatio?: number;

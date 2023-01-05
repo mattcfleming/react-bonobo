@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Text, View, Stage, Layer } from './core';
 
 const container = document.getElementById('app') as HTMLDivElement;

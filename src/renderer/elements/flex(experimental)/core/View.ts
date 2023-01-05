@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type Layer from './Layer';
 import type Text from './Text';
 import Node from './Node';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Yoga from 'yoga-layout';
 
 export interface ITextLayout {

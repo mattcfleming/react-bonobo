@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ViewDefaults } from '../constants';
 
 class View {

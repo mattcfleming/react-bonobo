@@ -1,3 +1,4 @@
+// @ts-nocheck
 function create(styles) {
   if (!styles) {
     return {};

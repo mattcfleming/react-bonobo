@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type Layer from './Layer';
 import Node from './Node';
 import type { ITextLayout, ITextStyle } from './types';

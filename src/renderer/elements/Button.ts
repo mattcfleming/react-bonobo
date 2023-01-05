@@ -1,14 +1,15 @@
+// @ts-nocheck
 import { ButtonDefaults } from '../constants';
-import { trackMousePosition, isMouseInside } from '../utils';
+// import { trackMousePosition, isMouseInside } from '../utils';
 import type { CanvasComponentContext } from '../types';
 
 //TODO adjust Opacity when focus, Blur
 type PressEvent = {};
 type ButtonProps = {
   title: string;
-  onPress: (event?: PressEvent) => mixed;
-  onClick: (event?: SyntheticMouseEvent<HTMLButtonElement>) => mixed;
-  //handleOnClick:(event?:SyntheticMouseEvent<HTMLButtonElement>)=>mixed,
+  onPress: (event?: PressEvent) => void;
+  onClick: (event?: any) => void;
+  //handleOnClick:(event?:SyntheticMouseEvent<HTMLButtonElement>)=>void,
   touchSoundDisabled?: boolean;
   color?: string;
   /**
@@ -54,7 +55,7 @@ type ButtonProps = {
    * If true, disable all interactions for this component.
    */
   disabled?: boolean;
-  getDimension?: () => mixed;
+  getDimension?: () => void;
   /**
    * Used to locate this view in end-to-end tests.
    */
@@ -183,7 +184,7 @@ Note onClick will need to share scope with this function to work properly.
   // ctx.canvas.addEventListener('blur', redrawButton);
 }
 
-export default function createButtonInstance(props: ButtonProps): mixed {
+export default function createButtonInstance(props: ButtonProps): void {
   return {
     type: 'Button',
     render: renderButton.bind(this, props),

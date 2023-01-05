@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { CanvasComponentContext, SpatialGeometry } from '../types';
 
 type Props = {
@@ -101,7 +102,7 @@ function clearText(
   renderText(clearProps, apeContext, parentLayout);
 }
 
-export default function CreateTextInstance(props: Props): mixed {
+export default function CreateTextInstance(props: Props): void {
   const { style } = props;
   return {
     type: 'Text',

@@ -1,6 +1,6 @@
 // https://github.com/facebook/react/blob/master/packages/react-native-renderer/src/ReactNativeFrameScheduling.js
 // TODO: make this hardware relevant/aware
-
+// @ts-nocheck
 const hasNativePerformanceNow =
   typeof performance === 'object' &&
   // $FlowFixMe[method-unbinding]

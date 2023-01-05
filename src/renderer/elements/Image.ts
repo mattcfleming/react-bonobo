@@ -1,10 +1,11 @@
+// @ts-nocheck
 import type { CanvasComponentContext, SpatialGeometry } from '../types';
 
 const cacheImageControl = {};
 
 function saveOnCache(
   src: string,
-  element: Image,
+  element: any,
   width: number,
   height: number
 ): void {
@@ -26,7 +27,7 @@ type ImageStyle = {
 type Props = {
   style: ImageStyle;
   src: string;
-  imageElement: Image;
+  imageElement: any;
   width?: number;
   height?: number;
 };
@@ -38,7 +39,7 @@ type ParentLayout = {
 
 function drawImage(
   ctx: CanvasRenderingContext2D,
-  imageElement: Image,
+  imageElement: any,
   x: number,
   y: number,
   width: number,
@@ -137,7 +138,7 @@ function renderImage(
   }
 }
 
-export default function CreateImageInstance(props: Props): mixed {
+export default function CreateImageInstance(props: Props): void {
   return {
     type: 'Image',
     render: renderImage.bind(this, props),

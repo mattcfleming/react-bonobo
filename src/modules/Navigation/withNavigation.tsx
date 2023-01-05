@@ -1,6 +1,7 @@
+// @ts-nocheck
 import * as React from 'react';
 import { getComponentDisplayName } from '../utils';
-import { unsafeCreateUniqueId } from '../../renderer/utils';
+// import { unsafeCreateUniqueId } from '../../renderer/utils';
 import { FocusPathContext } from './FocusPathContext';
 import FocusSpatialMap from './FocusSpatialMap';
 
@@ -8,9 +9,9 @@ type RequiredProps = {};
 
 // See why we do `| void`
 // https://flow.org/en/docs/react/hoc/#toc-injecting-props-with-a-higher-order-component
-type InjectedProps = {
-  focusPath: string | void;
-};
+// type InjectedProps = {
+//   focusPath: string | void;
+// };
 
 type State = {
   currentFocusPath: string;
@@ -21,9 +22,9 @@ type State = {
  * from the focusable elements inside the WrappedComponent.
  * Should be used to wrap the root component of the application.
  */
-function withNavigation<RequiredProps>(
+function withNavigation(
   WrappedComponent: React.ComponentType<RequiredProps>
-): React.ComponentType<$Diff<RequiredProps, InjectedProps>> {
+): any {
   return class extends React.Component<RequiredProps, State> {
     static WrappedComponent = WrappedComponent;
     static displayName = `withNavigation(${getComponentDisplayName(

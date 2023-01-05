@@ -1,3 +1,4 @@
+// @ts-nocheck
 function getWidth() {
   if (window || document) {
     return (

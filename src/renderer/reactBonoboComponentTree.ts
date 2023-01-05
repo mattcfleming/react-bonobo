@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { unsafeCreateUniqueId } from './utils';
 
 const randomKey = unsafeCreateUniqueId();

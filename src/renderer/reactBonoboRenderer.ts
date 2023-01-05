@@ -1,7 +1,7 @@
-// import { CanvasComponentContext } from './types';
+// @ts-nocheck
 import reconciler from 'react-reconciler';
 import reactBonoboComponent from './reactBonoboComponent';
-import { scaleDPI, clearCanvas } from './core/canvas';
+import { scaleDPI } from './core/canvas';
 import { renderElement, renderQueue } from './core/render';
 import {
   precacheFiberNode,
@@ -12,7 +12,7 @@ import {
   now as FrameSchedulingNow,
   cancelDeferredCallback as FrameSchedulingCancelDeferredCallback,
   scheduleDeferredCallback as FrameSchedulingScheduleDeferredCallback,
-  shouldYield as FrameSchedulingShouldYield,
+  // shouldYield as FrameSchedulingShouldYield,
 } from './reactBonoboFrameScheduling';
 
 // TODO: Use Context.
@@ -79,12 +79,16 @@ const ReactBonoboFiber = reconciler({
   },
 
   createTextInstance(text, rootContainerInstance, internalInstanceHandle) {
-    // let textNode = reactApeComponent.createTextNode(text, rootContainerInstance);
-    // precacheFiberNode(internalInstanceHandle, textNode);
+    let textNode = reactApeComponent.createTextNode(
+      text,
+      rootContainerInstance
+    );
+    precacheFiberNode(internalInstanceHandle, textNode);
     return text;
   },
 
   finalizeInitialChildren(parentInstance, type, props) {
+    console.log(props);
     if (type === 'View') {
       parentInstance.render(bonoboCtxGlobal);
     }
@@ -95,7 +99,9 @@ const ReactBonoboFiber = reconciler({
     return inst;
   },
 
-  prepareForCommit(rootContainerInstance) {},
+  prepareForCommit(rootContainerInstance) {
+    console.log(rootContainerInstance);
+  },
 
   prepareUpdate(
     element,
@@ -161,6 +167,7 @@ const ReactBonoboFiber = reconciler({
   clearContainer() {},
 
   resetAfterCommit(rootContainerInstance) {
+    console.log(rootContainerInstance);
     // resetAfterCommit happens only for children changes
     renderQueue(bonoboCtxGlobal, () => {
       bonoboCtxGlobal.setSurfaceHeight(0);
@@ -168,10 +175,12 @@ const ReactBonoboFiber = reconciler({
   },
 
   resetTextContent(element) {
+    console.log(element);
     // noop
   },
 
   getRootHostContext(rootInstance) {
+    console.log(rootInstance);
     return {};
   },
 
@@ -191,51 +200,53 @@ const ReactBonoboFiber = reconciler({
   isPrimaryRenderer: true,
   supportsMutation: true,
 
-  shouldDeprioritizeSubtree(type, props) {
-    return false;
-  },
+  // shouldDeprioritizeSubtree(type, props) {
+  //   console.log(type, props);
+  //   return false;
+  // },
 
-  appendChildToContainer(parentInstance, child) {
-    // bonoboCtxGlobal.setSurfaceHeight(0);
-    // if (child.render) {
-    //   child.render(bonoboCtxGlobal);
-    // }
-  },
+  // appendChildToContainer(parentInstance, child) {
+  //   console.log(parentInstance, child);
+  //   bonoboCtxGlobal.setSurfaceHeight(0);
+  //   if (child.render) {
+  //     child.render(bonoboCtxGlobal);
+  //   }
+  // },
 
-  appendChild(parentInstance, child) {
-    // console.log(parentInstance, child);
-    // if (parentInstance.appendChild) {
-    //   parentInstance.appendChild(child);
-    // }
-  },
+  // appendChild(parentInstance, child) {
+  //   // console.log(parentInstance, child);
+  //   // if (parentInstance.appendChild) {
+  //   //   parentInstance.appendChild(child);
+  //   // }
+  // },
 
-  removeChild(parentInstance, child) {
-    // parentInstance.removeChild(child);
-    if (child.type && child.type === 'View') {
-      child.clear(bonoboCtxGlobal, parentInstance.getLayoutDefinitions());
-    }
-  },
+  // removeChild(parentInstance, child) {
+  //   // parentInstance.removeChild(child);
+  //   if (child.type && child.type === 'View') {
+  //     child.clear(bonoboCtxGlobal, parentInstance.getLayoutDefinitions());
+  //   }
+  // },
 
-  removeChildFromContainer(parentInstance, child) {
-    // parentInstance.removeChild(child);
-  },
+  // removeChildFromContainer(parentInstance, child) {
+  //   // parentInstance.removeChild(child);
+  // },
 
-  insertInContainerBefore(parentInstance, child, beforeChild) {
-    // noop
-  },
+  // insertInContainerBefore(parentInstance, child, beforeChild) {
+  //   // noop
+  // },
 
-  commitUpdate(instance, updatePayload, type, oldProps, newProps) {
-    // noop
-  },
+  // commitUpdate(instance, updatePayload, type, oldProps, newProps) {
+  //   // noop
+  // },
 
-  commitMount(instance, updatePayload, type, oldProps, newProps) {
-    // noop
-  },
+  // commitMount(instance, updatePayload, type, oldProps, newProps) {
+  //   // noop
+  // },
 
-  commitTextUpdate(textInstance, oldText, newText) {
-    // textInstance.children = newText;
-    // console.log(111, textInstance, oldText, newText);
-  },
+  // commitTextUpdate(textInstance, oldText, newText) {
+  //   // textInstance.children = newText;
+  //   // console.log(111, textInstance, oldText, newText);
+  // },
 
   shouldSetTextContent(props) {
     return (

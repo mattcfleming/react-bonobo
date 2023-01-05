@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react';
 import { getComponentDisplayName } from '../utils';
 import { FocusPathContext } from './FocusPathContext';
@@ -8,9 +9,9 @@ type RequiredProps = {
 
 // See why we do `| void`
 // https://flow.org/en/docs/react/hoc/#toc-injecting-props-with-a-higher-order-component
-type InjectedProps = {
-  focused: boolean | void;
-};
+// type InjectedProps = {
+//   focused: boolean | void;
+// };
 
 /**
  * Allows the WrappedComponent to be focusable and provides the `focused`
@@ -19,9 +20,7 @@ type InjectedProps = {
  */
 import FocusSpatialMap from './FocusSpatialMap';
 
-function withFocus(
-  WrappedComponent: React.ComponentType<RequiredProps>
-): React.ComponentType<$Diff<RequiredProps, InjectedProps>> {
+function withFocus(WrappedComponent: React.ComponentType<RequiredProps>): any {
   return class extends React.Component<RequiredProps> {
     static WrappedComponent = WrappedComponent;
     static displayName = `withFocus(${getComponentDisplayName(

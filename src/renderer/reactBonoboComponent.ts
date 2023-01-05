@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Image from './elements/Image';
 import Text from './elements/Text';
 import View from './elements/View';

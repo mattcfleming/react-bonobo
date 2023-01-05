@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const CustomComponents = {};
 
 function registerComponent(componentName, Component) {

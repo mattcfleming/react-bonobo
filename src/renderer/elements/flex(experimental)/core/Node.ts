@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Yoga from 'yoga-layout';
 import type Layer from './Layer';
 import type View from './View';

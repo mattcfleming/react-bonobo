@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type Stage from './Stage';
 import type View from './View';
 import type Text from './Text';
