@@ -1,5 +1,5 @@
 import type Layer from './Layer';
-import type { IStageProps } from './interface';
+import type { IStageProps } from './types';
 
 export default class Stage {
   content: HTMLDivElement = document.createElement('div');

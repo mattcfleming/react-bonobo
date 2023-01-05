@@ -11,7 +11,7 @@ import {
   FlexAlignItems,
   FlexJustifyContent,
   FlexDisplay,
-} from './interface';
+} from './types';
 
 const isUndefined = (v: unknown) => v === undefined;
 
@@ -23,7 +23,7 @@ export default class Node {
   protected offset = { x: 0, y: 0 };
   constructor(protected style: IBaseStyle) {}
 
-  // 设置 yoga 布局
+  // yoga
   setLayout() {
     const {
       display,
@@ -78,7 +78,6 @@ export default class Node {
     }
   }
 
-  // 获取布局信息
   calcLayout() {
     const {
       color = 'white',
@@ -113,12 +112,21 @@ export default class Node {
     }
     const [paddingTop, paddingRight, paddingBottom] = paddings;
     if (paddings.length === 1) {
+      if (!paddingTop) {
+        return [0, 0, 0, 0];
+      }
       return Array.from({ length: 4 }, () => +paddingTop);
     }
     if (paddings.length === 2) {
+      if (!paddingTop || !paddingRight) {
+        return [0, 0, 0, 0];
+      }
       return [+paddingTop, +paddingRight, +paddingTop, +paddingRight];
     }
     if (paddings.length === 3) {
+      if (!paddingTop || !paddingRight || !paddingBottom) {
+        return [0, 0, 0, 0];
+      }
       return [+paddingTop, +paddingRight, +paddingBottom, +paddingRight];
     }
     if (paddings.length === 4) {

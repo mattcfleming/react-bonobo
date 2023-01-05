@@ -1,6 +1,6 @@
 import type Layer from './Layer';
 import Node from './Node';
-import type { ITextLayout, ITextStyle } from './interface';
+import type { ITextLayout, ITextStyle } from './types';
 
 export default class Text extends Node {
   layer!: Layer;
@@ -32,7 +32,7 @@ export default class Text extends Node {
     const ctx = this.layer.context;
     ctx.font = this.layout.font;
     ctx.fillStyle = this.layout.fillStyle;
-    // yoga 计算的是相对父元素的定位，所以需要加上父元素的x、y
+    // yoga
     ctx.fillText(
       this.style.text,
       this.layout.x + this.parent.layout.x,

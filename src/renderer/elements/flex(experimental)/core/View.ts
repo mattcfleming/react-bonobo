@@ -1,7 +1,7 @@
 import type Layer from './Layer';
 import type Text from './Text';
 import Node from './Node';
-import type { IViewLayout, IViewStyle } from './interface';
+import type { IViewLayout, IViewStyle } from './types';
 
 export default class View extends Node {
   layer!: Layer;
@@ -13,26 +13,23 @@ export default class View extends Node {
     super(style);
   }
 
-  // 更新属性
   update(nextProps?: Partial<IViewStyle>) {
     this.style = { ...this.style, ...nextProps };
     const layer = this.getLayer();
     layer?.batchDraw();
   }
 
-  // 开始布局（包括遍历子节点布局）
   handleSetLayout() {
     this.setLayout();
     this.children.forEach((child) => child.handleSetLayout());
   }
 
-  // 开始重绘
   draw() {
     this.calcLayout();
     this.drawCanvas();
   }
 
-  // 绘制 canvas
+  // canvas
   drawCanvas() {
     console.log('drawCanvas view', this.layout);
     const ctx = this.layer.context;
