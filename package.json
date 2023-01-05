@@ -1,6 +1,6 @@
 {
   "name": "react-bonobo",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "ReactBonobo",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
